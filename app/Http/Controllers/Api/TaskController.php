@@ -55,7 +55,7 @@ class TaskController extends Controller
         Log::info(json_encode($request->all()));
         try {
             if (! $this->task->checkExists($id)) {
-                return $this->response400('Id is Exists');
+                return $this->response400('Id is not Exists');
             }
 
             DB::beginTransaction();
@@ -72,7 +72,7 @@ class TaskController extends Controller
     {
         try {
             if (! $this->task->checkExists($id)) {
-                return $this->response400('Id is Exists');
+                return $this->response400('Id is not Exists');
             }
 
             DB::beginTransaction();
@@ -89,7 +89,7 @@ class TaskController extends Controller
     {
         try {
             if (! $this->task->checkExists($id)) {
-                return $this->response400('Id is Exists');
+                return $this->response400('Id is not Exists');
             }
 
             DB::beginTransaction();
