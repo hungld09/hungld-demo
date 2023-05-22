@@ -35,4 +35,12 @@ abstract class BaseRepository
     {
         return $this->model->whereKey($id)->delete();
     }
+
+    /**
+     * @param integer $id
+     */
+    public function checkExistsById(int $id)
+    {
+        return $this->model->whereKey($id)->exists();
+    }
 }

@@ -36,6 +36,14 @@ class TaskRepository extends BaseRepository
     /**
      * @param integer $id
      */
+    public function checkExists(int $id)
+    {
+        return $this->checkExistsById($id);
+    }
+
+    /**
+     * @param integer $id
+     */
     public function delete(int $id)
     {
         return $this->deleteById($id);

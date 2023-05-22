@@ -54,6 +54,10 @@ class TaskController extends Controller
         // co the luu theo channel
         Log::info(json_encode($request->all()));
         try {
+            if (! $this->task->checkExists($id)) {
+                return $this->response400('Id is Exists');
+            }
+
             DB::beginTransaction();
             $this->task->update($request->validated(), $id);
             DB::commit();
@@ -67,6 +71,10 @@ class TaskController extends Controller
     public function updateStatus(TaskUpdateStatusRequest $request, int $id): JsonResponse
     {
         try {
+            if (! $this->task->checkExists($id)) {
+                return $this->response400('Id is Exists');
+            }
+
             DB::beginTransaction();
             $this->task->update($request->validated(), $id);
             DB::commit();
@@ -80,6 +88,10 @@ class TaskController extends Controller
     public function delete(int $id): JsonResponse
     {
         try {
+            if (! $this->task->checkExists($id)) {
+                return $this->response400('Id is Exists');
+            }
+
             DB::beginTransaction();
             $this->task->delete($id);
             DB::commit();
